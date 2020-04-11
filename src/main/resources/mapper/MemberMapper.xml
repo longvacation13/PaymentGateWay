@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+     
+<mapper namespace="com.ebj.paymentgate.t2020April.dao.MemberDao"> 	
+ 	
+ 	<!-- (신용카드 승인된 건의)최근 성공건수  -->
+ 	<select id="MemberCheck" parameterType="String" resultType="String">
+ 		select 'Y' 
+   		  from MEMBER
+   		 where MBR_ID  = #{mbrId}    		   		                        
+ 	</select>
+ 	
+ 	 	
+</mapper>

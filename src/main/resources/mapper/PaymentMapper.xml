@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+       
+<mapper namespace="com.ebj.paymentgate.t2020April.dao.PaymentDao"> 	
+ 	 
+ 	<!-- 결제내역 조회 -->
+ 	<select id="selectRecentPaymentList" parameterType="com.ebj.paymentgate.t2020April.dto.PaymentListDto" resultType="com.ebj.paymentgate.t2020April.dto.PaymentDto">
+ 		 SELECT 
+		    <if test="size != null and size != 0">
+		       TOP #{size}
+		    </if>
+ 		 		aprv_time AS aprvTime, 
+ 		 		aprv_type AS aprvType,  		 		
+ 		 		mbr_id    AS mbrId, 
+ 		 		pmt_amt   AS pmtAmt,  		 		
+ 		 		pmt_code  AS pmtCode,		 		 		       
+ 		        pmt_id    AS pmtId,
+ 		        pmt_type  AS pmtType, 
+ 		        succ_msg  AS succMsg, 
+ 		        succ_yn   AS succYn
+ 		   FROM PAYMENT
+ 		  WHERE 1=1 
+ 		   <if test="mbrId != null and mbrId != ''">
+ 		    AND mbr_id = #{mbrId}   
+ 		   </if>
+ 		   <if test="succYn != null and succYn != ''">
+ 		    AND succ_yn = #{succYn}
+ 		   </if>
+ 	   ORDER BY aprv_time
+ 	</select>
+ 	
+ 	
+ 	<!-- (신용카드 승인된 건의)최근 성공건수  -->
+ 	<select id="selectSuccCount" parameterType="com.ebj.paymentgate.t2020April.dto.PaymentDto" resultType="int">
+ 		 SELECT ISNULL(SUM(CASE WHEN succ_yn='Y' THEN 1 ELSE 0 END),0)
+   		   FROM ( SELECT top 10 succ_yn 
+   		   			FROM payment
+   		   		   WHERE APRV_TYPE = '10'    	 //승인	   		   
+   		   		     and PMT_CODE  = #{pmtCode}  //신용카드 
+   		   		     <if test="pmtType != null and pmtType != ''">
+   		   		     and PMT_TYPE  = #{pmtType}
+   		   		     </if>
+   		   		ORDER BY aprv_time DESC 
+   		   		) a                        		
+ 	</select>
+ 	
+ 	<!-- (전체취소된 건의)최근 성공건수  -->
+ 	<select id="selectCancelSuccCount" resultType="int">
+ 		 SELECT COUNT(succ_yn) 
+   		   FROM ( SELECT top 10 succ_yn 
+   		   			FROM payment 
+   		   		   WHERE APRV_TYPE = 'C'
+   		   		ORDER BY aprv_time DESC ) a 
+          WHERE succ_yn = 'Y'              	
+ 	</select>
+ 	
+ 	<!-- 결제 정보 조회 --> 	
+ 	<select id="PaymentInfoCheck" parameterType="com.ebj.paymentgate.t2020April.dto.PaymentDto" resultType="com.ebj.paymentgate.t2020April.dto.PaymentDto">
+ 		SELECT pmt_id  AS pmtId, 
+ 			   pmt_code AS pmtCode,  			    			  
+ 		       pmt_amt AS pmtAmt, 
+ 		       pmt_type AS pmtType
+ 		  FROM payment 
+ 		 WHERE pmt_id = #{pmtId} and mbr_id = #{mbrId} 
+ 	</select>
+ 	
+ 	<!--  취소 이력 조회  -->
+ 	<select id="CancelInfo" parameterType="com.ebj.paymentgate.t2020April.dto.PaymentDto" resultType="com.ebj.paymentgate.t2020April.dto.PaymentDto">
+ 	SELECT  SUM(pmt_amt) as pmtAmt
+ 	  FROM (
+ 	  		 //승인
+	 		 SELECT ISNULL(SUM(PMT_AMT),0) AS pmt_amt 
+	 		   FROM PAYMENT 
+ 			  WHERE APRV_TYPE = '10' 
+ 			    AND SUCC_YN = 'Y'
+ 			    AND PMT_ID = #{pmtId}
+
+		  UNION ALL 
+			 
+			 //취소 (취소시 SUCC_MSG에 origin pmt_id 넣어놓음)
+		     SELECT ISNULL(SUM(pmt_amt),0)*-1 AS pmt_amt 
+		       FROM payment 
+ 			  WHERE aprv_type = '20'
+ 			    AND succ_yn = 'Y' 
+ 			    AND succ_msg = #{pmtId}
+		   ) 	
+ 	</select>
+ 	
+ 	
+ 	<!-- Approve 결과 값 insert(성공/실패) -->
+ 	<insert id="paymentProcessComplete" parameterType="com.ebj.paymentgate.t2020April.dto.PaymentDto" useGeneratedKeys="true" keyProperty="pmtId">
+ 		INSERT 
+ 		  INTO payment (pmt_id, mbr_id, pmt_code, pmt_type, succ_yn, succ_msg, aprv_type, aprv_time, pmt_amt) 
+ 		         SELECT ISNULL(MAX(CAST(pmt_id AS INT))+1,0),
+ 			   #{mbrId}, #{pmtCode}, #{pmtType}, #{succYn}, #{succMsg}, #{aprvType}, #{aprvTime}, #{pmtAmt}	
+ 		  FROM payment 		 	
+ 	</insert>
+ 	
+ 	<!-- Cancel 결과 값 insert(성공/실패) -->
+ 	<insert id="PaymentCancel" parameterType="com.ebj.paymentgate.t2020April.dto.PaymentDto" useGeneratedKeys="true" keyProperty="pmtId">
+ 		INSERT 
+ 		  INTO payment (pmt_id, mbr_id, pmt_code, pmt_type, succ_yn, succ_msg, aprv_type, aprv_time, pmt_amt) 
+ 		         SELECT ISNULL(MAX(CAST(pmt_id AS INT))+1,0),
+ 			   #{mbrId}, #{pmtCode}, #{pmtType}, #{succYn}, #{succMsg}, #{aprvType}, #{aprvTime}, #{pmtAmt}	
+ 		  FROM payment 	 		 	 
+ 	</insert>
+ 	
+ 	 
+</mapper>

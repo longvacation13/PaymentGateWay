@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd"> <!-- mybatis-3-config.dtd에 주목 -->
+<configuration>
+	<settings>
+		<setting name="callSettersOnNulls" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="returnInstanceForEmptyRow" value="true" />  <!-- return value null 처리 (empty instance로 반환) -->
+	</settings>
+	<!-- 매핑정보 추가 -->
+	<mappers>
+	</mappers>
+</configuration>  

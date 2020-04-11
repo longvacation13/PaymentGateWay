@@ -1,0 +1,96 @@
+2020-04-10 21:07:00.626  INFO 11724 --- [main] c.s.h.t2020April.T2020AprilApplication   : Starting T2020AprilApplication on Jun_Kakao with PID 11724 (E:\t2020April_test\t2020April_test\target\classes started by junyoung in E:\t2020April_test\t2020April_test)
+2020-04-10 21:07:00.635  INFO 11724 --- [main] c.s.h.t2020April.T2020AprilApplication   : No active profile set, falling back to default profiles: default
+2020-04-10 21:07:05.443  INFO 11724 --- [main] c.s.h.t2020April.T2020AprilApplication   : Started T2020AprilApplication in 5.541 seconds (JVM running for 6.797)
+2020-04-10 21:40:53.372  INFO 19940 --- [main] c.s.h.t2020April.T2020AprilApplication   : Starting T2020AprilApplication on Jun_Kakao with PID 19940 (E:\t2020April_test\t2020April_test\target\classes started by junyoung in E:\t2020April_test\t2020April_test)
+2020-04-10 21:40:53.379  INFO 19940 --- [main] c.s.h.t2020April.T2020AprilApplication   : No active profile set, falling back to default profiles: default
+2020-04-10 21:40:57.598  INFO 19940 --- [main] c.s.h.t2020April.T2020AprilApplication   : Started T2020AprilApplication in 4.76 seconds (JVM running for 5.857)
+2020-04-11 16:39:15.888 ERROR 18324 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field codeDao in com.ebj.paymentgate.t2020April.Service.CommonCodeService required a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' in your configuration.
+
+2020-04-11 16:42:05.885 ERROR 7848 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field codeDao in com.ebj.paymentgate.t2020April.Service.CommonCodeService required a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' in your configuration.
+
+2020-04-11 16:43:25.443 ERROR 20272 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field codeDao in com.ebj.paymentgate.t2020April.Service.CommonCodeService required a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' in your configuration.
+
+2020-04-11 16:44:13.743 ERROR 13056 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field codeDao in com.ebj.paymentgate.t2020April.Service.CommonCodeService required a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' in your configuration.
+
+2020-04-11 16:46:04.787 ERROR 13900 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field codeDao in com.ebj.paymentgate.t2020April.Service.CommonCodeService required a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' in your configuration.
+

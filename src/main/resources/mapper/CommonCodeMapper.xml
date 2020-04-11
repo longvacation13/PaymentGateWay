@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+     
+<mapper namespace="com.ebj.paymentgate.t2020April.dao.CommonCodeDao"> 	
+ 	
+ 	<!-- 공통코드 정보 조회  -->
+ 	<select id="selectCodeListGroup" resultType="hashMap">
+ 		select PMT_CODE AS PMT_CODE, 
+ 			   PMT_TYPE AS PMT_TYPE, 
+ 			   PMT_NAME AS PMT_NAME, 
+ 			   PART_CNCL_YN AS PART_CNCL_YN
+   		  from PAYMENT_MST   		      		   		                       
+ 	</select>
+ 	
+ 	 	
+</mapper>
