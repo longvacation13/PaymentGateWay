@@ -1,4 +1,4 @@
-package com.ssg.homework.t2020April;
+package com.ebj.paymentgate.t2020April;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
@@ -31,6 +31,14 @@ class T2020AprilApplicationTests {
 	@Test
 	public void mavenTestPhase() throws Exception {			
 				
+		System.out.println(Math.random());
+		System.out.println(Math.random());
+		System.out.println(Math.random());
+		System.out.println(Math.random());
+		System.out.println(Math.random());
+		
+		
+		
 		//회원 ID 3개 취득
 		String[] mbrIdArr = {"0000000010","0000000098", "0000000101"};
 		
@@ -87,6 +95,112 @@ class T2020AprilApplicationTests {
 
 			 String contentPaymentList = mvcResPaymentList.getResponse().getContentAsString();
 			 			 
+			 System.out.println("contentPaymentList===>"+contentPaymentList);
+			 
+			 /**
+			 [{
+				    "pmtId": "20",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0014",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.611+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "21",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0009",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.648+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "22",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0010",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.674+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "23",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0014",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.682+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "24",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0001",
+				    "pmtType": "PT01",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.692+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "25",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0007",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.700+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "26",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0012",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "Success",
+				    "aprvType": "10",
+				    "aprvTime": "2020-04-12T06:06:57.709+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "27",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0014",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "20",
+				    "aprvType": "20",
+				    "aprvTime": "2020-04-12T06:06:57.719+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "28",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0009",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "21",
+				    "aprvType": "20",
+				    "aprvTime": "2020-04-12T06:06:57.727+0000",
+				    "pmtAmt": 1547000
+				}, {
+				    "pmtId": "29",
+				    "mbrId": "0000000101",
+				    "pmtCode": "P0010",
+				    "pmtType": "",
+				    "succYn": "Y",
+				    "succMsg": "22",
+				    "aprvType": "20",
+				    "aprvTime": "2020-04-12T06:06:57.734+0000",
+				    "pmtAmt": 15000
+				}]			 
+			 **/
+			 
 			 String[] a = contentPaymentList.split("},"); 
 			 
 			 int SuccCnt = 0; 

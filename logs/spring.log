@@ -94,3 +94,17 @@ Action:
 
 Consider defining a bean of type 'com.ebj.paymentgate.t2020April.dao.CommonCodeDao' in your configuration.
 
+2020-04-11 21:52:38.720 ERROR 19548 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 5555 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 5555 or configure this application to listen on another port.
+
